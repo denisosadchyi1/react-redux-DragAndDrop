@@ -5,10 +5,10 @@ import TodoItem from '../TodoItem';
 import s from './board.module.scss';
 
 const TodoBoard = () => {
-  const boards = useSelector(state => state.todos)
   const dispatch = useDispatch()
-  const currentBoard = useSelector(state => state.currentBoard)
-  const currentItem = useSelector(state => state.currentItem)
+  const boards = useSelector(state => state.todos)
+  const currentBoard = useSelector(state => state.current.currentBoard)
+  const currentItem = useSelector(state => state.current.currentItem)
   const todos = useSelector(state => state.todos)
 
   const dragOverHandler = (e) => {
@@ -47,14 +47,12 @@ const TodoBoard = () => {
           className={s.boardWrapper}
           onDragOver={(e) => dragOverHandler(e)}
           onDrop={(e) => onDropCardHandler(e, board)} 
-          key={Math.random() + Date.now() * Math.random()} 
         >
         <div className={s.boardTitle}>{board.title}</div>
         {board.items.map(item => 
           <TodoItem
             item={item}
             board={board}
-            key={Math.random() + Date.now() * Math.random()} 
             title={item.title}
           />  
         )}
