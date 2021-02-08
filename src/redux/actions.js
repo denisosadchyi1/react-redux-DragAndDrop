@@ -30,20 +30,16 @@ export const dragEnd = (e) => {
   }
 }
 
-export const dropHandler = (e, board, item) => {
+export const dropHandler = (tmpBoard) => {
   return {
     type: DROP,
-    payload: {
-      e, board, item
-    }
+    payload: tmpBoard
   }
 }
 
-export const dropCardHandler = (e, board) => {
+export const dropCardHandler = (tmpBoard) => {
   return {
     type: DROP_CARD ,
-    payload: {
-      e, board
-    }
+    payload: tmpBoard
   }
 }
