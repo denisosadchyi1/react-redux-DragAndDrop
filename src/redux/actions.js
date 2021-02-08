@@ -1,10 +1,10 @@
-import { DRAG_END, DRAG_LEAVE, DRAG_OVER, DRAG_START, DROP, DROP_CARD } from "./actionType"
+import { ADD_NEW, DRAG_END, DRAG_LEAVE, DRAG_OVER, DRAG_START, DROP, DROP_CARD } from "./actionType"
 
-export const dragStart = (e, board, item) => {
+export const dragStart = (board, item) => {
   return {
     type: DRAG_START,
     payload: {
-      e, board, item
+        board, item
     }
   }
 }
@@ -41,5 +41,12 @@ export const dropCardHandler = (tmpBoard) => {
   return {
     type: DROP_CARD ,
     payload: tmpBoard
+  }
+}
+
+export const addNew = (newTmp) => {
+  return {
+    type: ADD_NEW,
+    payload: newTmp
   }
 }

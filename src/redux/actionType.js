@@ -4,3 +4,4 @@ export const DRAG_OVER = 'DRAG_OVER';
 export const DRAG_END = 'DRAG_END';
 export const DROP = 'DROP';
 export const DROP_CARD = 'DROP_CARD';
+export const ADD_NEW = 'ADD_NEW';

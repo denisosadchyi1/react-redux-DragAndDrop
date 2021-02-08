@@ -10,14 +10,16 @@ const TodoBoard = () => {
   const currentBoard = useSelector(state => state.currentBoard)
   const currentItem = useSelector(state => state.currentItem)
   const todos = useSelector(state => state.todos)
+
   const dragOverHandler = (e) => {
     e.preventDefault()
-    if (e.target.className == "sc-gsTCUz bBxwgc") {
+    if (e.target.className.includes('itemWrapper')) {
       e.target.style.boxShadow = '0 2px 3px gray'
     }
   }
 
-  const onDropCardHandler = (e, board, item) => {
+  const onDropCardHandler = (e, board) => {
+    e.preventDefault()
     if(e.target.className.includes('itemWrapper')) {
       return
     } else {
@@ -45,14 +47,14 @@ const TodoBoard = () => {
           className={s.boardWrapper}
           onDragOver={(e) => dragOverHandler(e)}
           onDrop={(e) => onDropCardHandler(e, board)} 
-          key={Math.random() + Date.now()} 
+          key={Math.random() + Date.now() * Math.random()} 
         >
         <div className={s.boardTitle}>{board.title}</div>
         {board.items.map(item => 
           <TodoItem
             item={item}
             board={board}
-            key={Math.random() + Date.now()} 
+            key={Math.random() + Date.now() * Math.random()} 
             title={item.title}
           />  
         )}
