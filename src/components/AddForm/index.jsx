@@ -23,6 +23,7 @@ const AddForm = () => {
         }
         return todo;
       });
+      setText('')
       dispatch(addNew(newTmp));
     }
   };
@@ -42,6 +43,7 @@ const AddForm = () => {
           }
           return todo;
         });
+        setText('')
         dispatch(addNew(newTmp));
       }
     }

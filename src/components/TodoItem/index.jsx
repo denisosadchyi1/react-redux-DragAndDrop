@@ -1,13 +1,25 @@
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { dragStart, dropHandler } from "../../redux/actions";
+import { deleteItem, dragStart, dropHandler } from "../../redux/actions";
 import s from "./item.module.scss";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 const TodoItem = ({ title, item, board }) => {
   const dispatch = useDispatch();
   const currentBoard = useSelector((state) => state.current.currentBoard);
   const currentItem = useSelector((state) => state.current.currentItem);
   const todos = useSelector((state) => state.todos);
+
+  const onDelete = () => {
+    let tmp = todos.map(todo => {
+      if (todo.id === board.id) {
+        todo.items = todo.items.filter(t => t.id !== item.id)
+      }
+      return todo
+    })
+    dispatch(deleteItem(tmp))
+  }
 
   const dragOverHandler = (e) => {
     e.preventDefault();
@@ -54,6 +66,12 @@ const TodoItem = ({ title, item, board }) => {
       onDrop={(e) => onDropHandler(e, board, item)}
     >
       {title}
+      <FontAwesomeIcon 
+        className={s.deleteButton} 
+        icon={faTimes} 
+        onClick={() => onDelete()}
+        // onClick={() => dispatch(deleteItem(item.id, board.id))}
+      />
     </div>
   );
 };

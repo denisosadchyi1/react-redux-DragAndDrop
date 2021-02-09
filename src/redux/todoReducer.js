@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { ADD_NEW, DRAG_START, DROP, DROP_CARD } from "./actionType";
+import { ADD_NEW, DRAG_START, DROP, DROP_CARD, DELETE_ITEM } from "./actionType";
 
 const todosState = [
   {
@@ -40,6 +40,8 @@ export const todosReducer = (state = todosState, action) => {
     case DROP_CARD:
       return [...action.payload]
     case ADD_NEW:
+      return [...action.payload]
+    case DELETE_ITEM:
       return [...action.payload]
     default:
       return state;

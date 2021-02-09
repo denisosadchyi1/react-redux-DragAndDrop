@@ -54,6 +54,7 @@ const TodoBoard = () => {
             item={item}
             board={board}
             title={item.title}
+            id={item.id}
           />  
         )}
         </div>

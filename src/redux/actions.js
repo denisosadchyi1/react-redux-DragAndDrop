@@ -1,4 +1,4 @@
-import { ADD_NEW, DRAG_END, DRAG_LEAVE, DRAG_OVER, DRAG_START, DROP, DROP_CARD } from "./actionType"
+import { ADD_NEW, DRAG_END, DRAG_LEAVE, DRAG_OVER, DRAG_START, DROP, DROP_CARD, DELETE_ITEM } from "./actionType"
 
 export const dragStart = (board, item) => {
   return {
@@ -48,5 +48,12 @@ export const addNew = (newTmp) => {
   return {
     type: ADD_NEW,
     payload: newTmp
+  }
+}
+
+export const deleteItem = (tmp) => {
+  return {
+    type: DELETE_ITEM,
+    payload: tmp
   }
 }

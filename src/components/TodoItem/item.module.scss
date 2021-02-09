@@ -1,4 +1,6 @@
 .itemWrapper{
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   border: 2px solid #007bff;
   padding: 10px;
@@ -12,3 +14,13 @@
   cursor: grab;
 };
 
+.deleteButton{
+  background: transparent;
+  border: none;
+  outline: none;
+  color: rgb(255, 122, 122);
+  font-weight: 800;
+  font-size: 18px;
+  font-style: italic;
+  cursor: pointer;
+}
