@@ -32,10 +32,6 @@ const todosState = [
   { id: 4, title: "Новые", items: [] },
 ];
 
-const currentState = {
-  currentItem: null,
-  currentBoard: null,
-};
 
 export const todosReducer = (state = todosState, action) => {
   switch (action.type) {
@@ -48,6 +44,11 @@ export const todosReducer = (state = todosState, action) => {
     default:
       return state;
   }
+};
+
+const currentState = {
+  currentItem: null,
+  currentBoard: null,
 };
 
 const currentReducer = (state = currentState, action) => {
