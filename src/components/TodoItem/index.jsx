@@ -23,8 +23,10 @@ const TodoItem = ({ title, item, board }) => {
 
   const dragOverHandler = (e) => {
     e.preventDefault();
-    if (e.target.className.includes("itemWrapper")) {
-      e.target.style.boxShadow = "0 2px 3px gray";
+    if(e.target.tagName !== 'svg') {
+      if (e.target.className === 'item_itemWrapper__2wCL-') {
+        e.target.style.boxShadow = "0 2px 3px gray";
+      }
     }
   };
 

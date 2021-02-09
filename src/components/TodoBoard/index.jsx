@@ -13,30 +13,35 @@ const TodoBoard = () => {
 
   const dragOverHandler = (e) => {
     e.preventDefault()
-    if (e.target.className.includes('itemWrapper')) {
+    if (e.target.className === 'board_boardWrapper__1fAi4') {
       e.target.style.boxShadow = '0 2px 3px gray'
     }
   }
 
   const onDropCardHandler = (e, board) => {
     e.preventDefault()
-    if(e.target.className.includes('itemWrapper')) {
-      return
+    console.log(e.target.tagName)
+    if(e.target.tagName !== 'svg' && e.target.tagName !== 'path') {
+      if (e.target.className === 'item_itemWrapper__2wCL-') {
+        return
+      } else {
+        board.items.push(currentItem)
+        const currentIndex = currentBoard.items.indexOf(currentItem)
+        currentBoard.items.splice(currentIndex, 1)
+        let tmpBoard = todos.map(b => {
+          if (b.id === board.id) {
+              return board
+          }
+          if (b.id === currentBoard.id) {
+            return currentBoard
+          }
+          return b
+        })
+        e.target.style.boxShadow = 'none'
+        dispatch(dropCardHandler(tmpBoard))
+      }
     } else {
-      board.items.push(currentItem)
-      const currentIndex = currentBoard.items.indexOf(currentItem)
-      currentBoard.items.splice(currentIndex, 1)
-      let tmpBoard = todos.map(b => {
-        if (b.id === board.id) {
-            return board
-        }
-        if (b.id === currentBoard.id) {
-          return currentBoard
-        }
-        return b
-      })
-      e.target.style.boxShadow = 'none'
-      dispatch(dropCardHandler(tmpBoard))
+      return
     }
   }
 
